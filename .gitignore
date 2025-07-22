@@ -1,0 +1,33 @@
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build directories
+dist/
+out/
+build/
+
+# Environment variables
+.env
+.env.* 
+
+# Logs
+logs/
+*.log
+
+# TypeScript cache
+*.tsbuildinfo
+
+# IDE/editor
+.vscode/
+.idea/
+.DS_Store
+
+# OS files
+Thumbs.db
+
+# Swagger generated files (agar yozsang)
+swagger.json
+swagger.yaml
