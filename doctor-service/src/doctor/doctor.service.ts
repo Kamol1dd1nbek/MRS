@@ -16,7 +16,7 @@ export class DoctorService {
     private readonly doctorRepo: Repository<Doctor>,
   ) {}
 
-  findAll() {
+  async findAll() {
     return this.doctorRepo.find({});
   }
 
