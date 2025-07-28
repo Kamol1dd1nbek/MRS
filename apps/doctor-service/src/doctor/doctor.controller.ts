@@ -12,23 +12,24 @@ import {
 import { DoctorService } from './doctor.service';
 import { CreateDoctorDto } from './dto/create-doctor.dto';
 import { UpdateDoctorDto } from './dto/update-doctor.dto';
+import { GrpcMethod } from '@nestjs/microservices';
 
 @Controller('doctors')
 export class DoctorController {
   constructor(private readonly doctorService: DoctorService) {}
 
-  @Get()
+  @GrpcMethod('DoctorService', 'FindAll')
   findAll() {
     return this.doctorService.findAll();
   }
 
-  @Get(':id')
-  getOneById(@Param('id', ParseIntPipe) id: number) {
-    return this.doctorService.findOneById(id);
+  @GrpcMethod('DoctorService', 'FindOne')
+  getOneById(data: { id: number }) {
+    return this.doctorService.findOneById(data.id);
   }
 
-  @Post()
-  create(@Body(ValidationPipe) createDoctorDto: CreateDoctorDto) {
+  @GrpcMethod('DoctorService', 'CreateDoctor')
+  create(createDoctorDto: CreateDoctorDto) {
     return this.doctorService.create(createDoctorDto);
   }
 
